@@ -1,0 +1,6 @@
+<section id="list-books">
+  @for (book of books()?.books; track book.bookId) {
+    <app-card [book]="book"/>
+  }
+</section>
+

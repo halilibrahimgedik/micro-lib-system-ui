@@ -1,0 +1,47 @@
+<a routerLink="/admin/books">
+  <i id="back-icon" class="fa-sharp fa-solid fa-circle-arrow-left"></i>
+</a>
+
+<section>
+  <div id="book-details">
+    <img src="fareler-ve-insanlar.jpg"/>
+    <div class="book-information">
+      <h3>{{ bookWithUsers()?.name | titlecase }}</h3>
+      <i>~{{ bookWithUsers()?.author | titlecase }}~</i>
+      <p class="p-3">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam dicta distinctio dolor earum,
+        eos explicabo harum illum incidunt ipsam itaque magni maiores officiis possimus quam rem reprehenderit vel
+        velit?
+      </p>
+    </div>
+  </div>
+</section>
+
+@if (bookWithUsers()?.users.length == 0) {
+  <p style="color:black">No Content</p>
+}
+@else {
+  <section>
+    <table class="table table-dark table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>Ad Soyad</th>
+        <th>E-mail</th>
+        <th>Rented Date</th>
+        <th>Due Date</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (user of bookWithUsers()?.users; track user.userId) {
+          <tr>
+            <td>{{ user.fullname }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.rentedDate }}</td>
+            <td>{{ user.dueDate }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </section>
+}
+

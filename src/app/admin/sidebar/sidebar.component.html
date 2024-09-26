@@ -1,0 +1,17 @@
+<mat-drawer-container class="admin-sidebar">
+  <mat-drawer mode="side" opened class="left-content">
+    <ul>
+      <li>
+        <a [routerLink]="['./users']" routerLinkActive="selected"> Kullanıcı İşlemleri</a>
+      </li>
+      <li>
+        <a [routerLink]="['./books']" routerLinkActive="selected"> Kitap İşlemleri</a>
+      </li>
+    </ul>
+  </mat-drawer>
+
+  <mat-drawer-content class="right-content">
+    <router-outlet > </router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+

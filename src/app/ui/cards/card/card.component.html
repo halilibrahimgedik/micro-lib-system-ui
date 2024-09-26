@@ -1,0 +1,9 @@
+<div class="bookCard">
+  <img src="fareler-ve-insanlar.jpg" alt="">
+  <div class="bookInfos">
+    <p> {{ book().name }}</p>
+    <i> {{ book().author }}</i>
+
+    <a class="btn btn-primary" [routerLink]="['/book/detail', book().bookId]"> incele </a>
+  </div>
+</div>

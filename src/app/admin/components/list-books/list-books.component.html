@@ -1,0 +1,41 @@
+@if(showUpdateBookDialog()){
+  <app-update-book-dialog [bookId]="updateBookId()" (showUpdateBookDialog)="onClose($event)"/>
+}
+
+<table class="table table-bordered table-bordered table-responsive-md  table-dark text-center">
+  <thead>
+  <tr class="p-3">
+    <th>Kitap Adı</th>
+    <th>Yazar</th>
+    <th>Kullanıcılar</th>
+    <th>İşlemler</th>
+  </tr>
+  </thead>
+  <tbody style="vertical-align: middle">
+    @for (book of booksWithUsers(); track book.bookId) {
+      <tr>
+        <td>{{ book.name }}</td>
+        <td>{{ book.author }}</td>
+        <td>
+          <div class="user-icon">
+            <a [routerLink]="['./book-detail',book.bookId]">
+              <i class="fa-solid fa-user-group"></i>
+            </a>
+            <i>{{ book.users.length}}</i>
+          </div>
+
+        </td>
+        <td>
+          <div class="user-operation-buttons">
+            <a (click)="onUpdateBook(book.bookId)">
+              <img src="edit.png" class="user-operation-icon" />
+            </a>
+            <a>
+              <img src="delete.png" class="user-operation-icon" />
+            </a>
+          </div>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

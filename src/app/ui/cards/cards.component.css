@@ -1,0 +1,8 @@
+#list-books{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  color: white;
+  padding: 2rem;
+}

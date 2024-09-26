@@ -1,0 +1,13 @@
+.table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.active {
+  color: green;
+}
+
+.passive {
+  color: red;
+}
+
