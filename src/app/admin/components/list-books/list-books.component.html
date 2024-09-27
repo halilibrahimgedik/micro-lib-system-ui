@@ -1,5 +1,8 @@
 @if(showUpdateBookDialog()){
-  <app-update-book-dialog [bookId]="updateBookId()" (showUpdateBookDialog)="onClose($event)"/>
+  <app-update-book-dialog [book]="updatedBook()"
+                          (showUpdateBookDialog)="onClose($event)"
+                          (updatedBookInfos)="onUpdateBookInfos($event)"
+                          class="position-fixed"/>
 }
 
 <table class="table table-bordered table-bordered table-responsive-md  table-dark text-center">
@@ -28,10 +31,10 @@
         <td>
           <div class="user-operation-buttons">
             <a (click)="onUpdateBook(book.bookId)">
-              <img src="edit.png" class="user-operation-icon" />
+              <img src="edit.png" alt="edit.png" class="user-operation-icon" />
             </a>
             <a>
-              <img src="delete.png" class="user-operation-icon" />
+              <img src="delete.png" alt="delete.png" class="user-operation-icon" />
             </a>
           </div>
         </td>

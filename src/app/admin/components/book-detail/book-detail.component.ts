@@ -28,7 +28,7 @@ export class BookDetailComponent implements OnInit {
   }
 
   private getBookWithUsers() {
-    const subscription = this.customHttpService.post<BookWithUsers>("library-management.getById", {
+    const subscription = this.customHttpService.post<BookWithUsers>("library-management.getByIdWithUsers", {
       bookId: this.bookId(),
     })
       .subscribe({
