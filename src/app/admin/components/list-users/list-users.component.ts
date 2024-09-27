@@ -31,10 +31,7 @@ export class ListUsersComponent implements OnInit{
       },
       error: (error: HttpErrorResponse) => {
         this.alertifyService.dismiss();
-        this.alertifyService.message(error.message + "statusCode: " + error.status, {
-          messageType: MessageType.Error,
-          delay: 5
-        })
+        this.alertifyService.message(error.message, {messageType: MessageType.Error, delay: 3})
       }
     })
 
@@ -47,11 +44,13 @@ export class ListUsersComponent implements OnInit{
     }).subscribe({
       next: (response) => {
         this.alertifyService.dismiss();
-        this.alertifyService.message("kulanıcı başarılı bir şekilde silinmiştir", {
+        this.alertifyService.message("kulanıcının durumu başarılı bir şekilde güncellenmiştir.", {
           delay: 2,
           messageType: MessageType.Warning,
           position: Position.Top_Center
         })
+
+        this.getUserList();
       },
       error: (error: HttpErrorResponse) => {
         this.alertifyService.dismiss();
@@ -60,8 +59,6 @@ export class ListUsersComponent implements OnInit{
     })
 
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
-
-    this.getUserList();
   }
 
   onDeleteUser(userId: string){

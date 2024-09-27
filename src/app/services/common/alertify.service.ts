@@ -30,8 +30,8 @@ export enum MessageType{
   Error = "error",
   Success = "success",
   Warning = "warning",
-  Notify = "Notify",
-  Message = "Message"
+  Notify = "notify",
+  Message = "message"
 }
 
 export enum Position{

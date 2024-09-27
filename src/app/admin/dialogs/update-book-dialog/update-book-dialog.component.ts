@@ -49,29 +49,34 @@ export class UpdateBookDialogComponent implements OnInit {
   }
 
   onSubmitDialog() {
-    this.updateBookHttpRequest();
-    this.publishNewBookInfos();
-    this.showUpdateBookDialog.emit(false);
-  }
-
-  updateBookHttpRequest() {
-    const subscription = this.customHttpService.post<ApiResponse<null>>("library-management.update", {
-      id: this.updateBookDialogForm.controls["bookId"].value,
-      name: this.updateBookDialogForm.get("bookName").value,
-      author: this.updateBookDialogForm.controls["author"].value,
-    })
-    .subscribe({
-      next: (response) => {
-        this.alertifyService.message("Kitap başarıyla güncellenmiştir", {
-          messageType: MessageType.Success,
-          position: Position.Top_Center,
-          delay: 3
-        });
-      },
-      error: err => this.alertifyService.message(err.message, {messageType: MessageType.Error}),
+    this.updateBookHttpRequest().then(() => {
+      this.publishNewBookInfos();
+      this.showUpdateBookDialog.emit(false);
     });
+  }
+  updateBookHttpRequest(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const subscription = this.customHttpService.post<ApiResponse<null>>("library-management.update", {
+        id: this.updateBookDialogForm.controls["bookId"].value,
+        name: this.updateBookDialogForm.get("bookName").value,
+        author: this.updateBookDialogForm.controls["author"].value,
+      }).subscribe({
+        next: (response) => {
+          this.alertifyService.message("Kitap başarıyla güncellenmiştir", {
+            messageType: MessageType.Message,
+            position: Position.Top_Center,
+            delay: 3
+          });
+          resolve();
+        },
+        error: err => {
+          this.alertifyService.message(err.message, { messageType: MessageType.Error });
+          reject(err);
+        },
+      });
 
-    this.destroyRef.onDestroy(() => subscription.unsubscribe());
+      this.destroyRef.onDestroy(() => subscription.unsubscribe());
+    });
   }
 
   publishNewBookInfos() {
@@ -83,4 +88,29 @@ export class UpdateBookDialogComponent implements OnInit {
 
     this.updatedBookInfos.emit(updateBookInfos);
   }
+
+  // onSubmitDialog() {
+  //   this.updateBookHttpRequest();
+  //   this.publishNewBookInfos();
+  //   this.showUpdateBookDialog.emit(false);
+  // }
+  //
+  // updateBookHttpRequest() {
+  //   const subscription = this.customHttpService.post<ApiResponse<null>>("library-management.update", {
+  //     id: this.updateBookDialogForm.controls["bookId"].value,
+  //     name: this.updateBookDialogForm.get("bookName").value,
+  //     author: this.updateBookDialogForm.controls["author"].value,
+  //   }).subscribe({
+  //     next: (response) => {
+  //       this.alertifyService.message("Kitap başarıyla güncellenmiştir", {
+  //         messageType: MessageType.Success,
+  //         position: Position.Top_Center,
+  //         delay: 3
+  //       });
+  //     },
+  //     error: err => this.alertifyService.message(err.message, {messageType: MessageType.Error}),
+  //   });
+  //
+  //   this.destroyRef.onDestroy(() => subscription.unsubscribe());
+  // }
 }
