@@ -4,10 +4,9 @@
 
 .admin-sidebar {
   width: auto;
-  margin: 5px;
   border: 1px solid #555;
   background: #eee;
-  height: 89vh;
+  height: 93vh;
 }
 
 .admin-sidebar .left-content {

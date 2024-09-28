@@ -75,4 +75,18 @@ export class ListBooksComponent implements OnInit{
     }
   }
 
+  onRemoveBook(bookId: string){
+    const requestData = {
+      id: bookId,
+    }
+    this.customHttpService.post<null>("library-management.delete", requestData).subscribe({
+      next: (response) => {
+        this.booksWithUsers.set(this.booksWithUsers().filter(book => book.bookId !== bookId));
+        this.alertifyService.dismiss();
+        this.alertifyService.message("Kitap başarılı bir şekilde silinmiştir.", {messageType: MessageType.Success});
+      },
+      error: err => {this.alertifyService.message("kitap silinemedi. lütfen daha sonra tekrar deneyiniz.", {messageType: MessageType.Error});}
+    })
+  }
+
 }

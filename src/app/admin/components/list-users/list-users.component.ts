@@ -5,11 +5,12 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {User} from "../../../models/user/user.model";
 import {CommonModule, TitleCasePipe, UpperCasePipe} from "@angular/common";
 import {RouterLink} from "@angular/router";
+import {UpdateUserDialogComponent} from "../../dialogs/update-user-dialog/update-user-dialog.component";
 
 @Component({
   selector: 'app-list-users',
   standalone: true,
-  imports: [UpperCasePipe, TitleCasePipe, CommonModule, RouterLink,],
+  imports: [UpperCasePipe, TitleCasePipe, CommonModule, RouterLink, UpdateUserDialogComponent,],
   templateUrl: './list-users.component.html',
   styleUrls: ['./list-users.component.css', '../../admin.component.css']
 })
@@ -19,6 +20,8 @@ export class ListUsersComponent implements OnInit{
   private destroyRef = inject(DestroyRef);
 
   users = signal<User[] | undefined>(undefined);
+  showUpdateUserDialog = signal(false);
+  selectedUser = signal<User | undefined>(undefined);
 
   ngOnInit() {
     this.getUserList();
@@ -66,7 +69,18 @@ export class ListUsersComponent implements OnInit{
   }
 
   onUpdateUser(userId: string){
-    console.log(userId);
+    this.showUpdateUserDialog.set(true);
+    this.selectedUser.set(this.users().find(user => user.userId === userId));
+  }
+  onCloseUpdateUserDialog(){
+    this.showUpdateUserDialog.set(false);
+  }
+
+  onUpdatedSelectedUser(updatedSelectedUser: User){
+    const oldUserInfos = this.users().find(user => user.userId === updatedSelectedUser.userId);
+    oldUserInfos.fullname = updatedSelectedUser.fullname;
+    oldUserInfos.email = updatedSelectedUser.email;
+    oldUserInfos.isActive = updatedSelectedUser.isActive;
   }
 
 }

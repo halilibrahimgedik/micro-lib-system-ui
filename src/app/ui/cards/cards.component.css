@@ -1,8 +1,58 @@
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: 90vh;
+  max-width: 100vw;
+  background-image: url('/hero-section.jpg');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  color:white;
+}
+
+.hero-content {
+  margin-left: 5vw;
+  max-width: 35%;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+}
+
+.hero-button {
+  padding: 10px 30px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
 #list-books{
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 3rem;
+  gap: 5rem;
   color: white;
-  padding: 2rem;
+  padding: 3rem 5rem;
 }

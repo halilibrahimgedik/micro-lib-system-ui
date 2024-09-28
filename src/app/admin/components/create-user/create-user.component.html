@@ -1,0 +1,15 @@
+<div class="row mt-5">
+  <div class="col-md-4 m-auto mt-5">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="email" class="form-label">E-mail adres</label>
+        <input type="email" class="form-control" id="email" [formControl]="registerForm.controls.mailAddress">
+      </div>
+      <div class="mb-3 mt-2">
+        <label for="fullName" class="form-label">Ad - Soyad</label>
+        <input type="text" class="form-control" id="fullName" [formControl]="registerForm.controls.fullName">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

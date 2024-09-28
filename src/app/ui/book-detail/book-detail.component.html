@@ -1,9 +1,32 @@
-<section id="bookDetail">
-  <p> {{ book()?.name}}</p>
-  <p> {{ book()?.author}}</p>
-  <a class="btn btn-primary">
-    kitabı kirala
-  </a>
+@if(showDialog()){
+  <app-dialog (sendInfo)="onSendInfo($event)"/>
+}
+
+<a routerLink="/">
+  <i id="back-icon" class="fa-sharp fa-solid fa-circle-arrow-left"></i>
+</a>
+
+<section>
+  <div id="book-details">
+    <img src="fareler-ve-insanlar.jpg"/>
+    <div class="book-information">
+      <h3>{{ book()?.name | titlecase }}</h3>
+      <i>~{{ book()?.author | titlecase }}~</i>
+      <p class="p-3">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam dicta distinctio dolor earum,
+        eos explicabo harum illum incidunt ipsam itaque magni maiores officiis possimus quam rem reprehenderit vel
+        velit?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam dicta distinctio dolor earum,
+        eos explicabo harum illum incidunt ipsam itaque magni maiores officiis possimus quam rem reprehenderit vel
+        velit?
+      </p>
+
+
+      <button class="btn btn-primary w-100 mt-3" (click)="onRentBook()">Kitabı Kirala</button>
+    </div>
+  </div>
 </section>
+
+
 
 

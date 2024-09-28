@@ -1,9 +1,14 @@
 <a [routerLink]="'./create-user'" class="btn btn-primary mb-3" >Yeni Kullanıcı Ekle</a>
 
+@if(showUpdateUserDialog()){
+  <app-update-user-dialog [selectedUser]="selectedUser()"
+                          (showDialog)="onCloseUpdateUserDialog()"
+                          (updatedSelectedUser)="onUpdatedSelectedUser($event)"/>
+}
+
 <table class="table table-bordered table-bordered table-responsive-md table table-dark text-center">
   <thead>
   <tr class="p-3">
-    <th>Kullanıcı Id</th>
     <th>Ad Soyad</th>
     <th>Mail Adres</th>
     <th>Durum</th>
@@ -11,9 +16,8 @@
   </tr>
   </thead>
   <tbody style="vertical-align: middle">
-    @for (user of users(); track user.isActive) {
+    @for (user of users(); track user.userId) {
       <tr>
-        <td> {{ user.userId }}</td>
         <td>{{ user.fullname | titlecase }}</td>
         <td>{{ user.email }}</td>
         <td [ngClass]="user.isActive ? 'active' : 'passive'">{{ user.isActive ? 'Aktif' : 'Pasif' }}</td>

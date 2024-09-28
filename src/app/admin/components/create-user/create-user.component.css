@@ -1,0 +1,9 @@
+#register {
+  width: 80vw;
+  margin: auto;
+  padding: 1rem;
+}
+
+.mb-3 label{
+  color: #333333;
+}

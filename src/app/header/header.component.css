@@ -1,8 +1,7 @@
 #navbar-section {
-  margin-bottom: 2rem;
+  /*margin-bottom: 2rem;*/
 }
 
-/* Navbar stil */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -39,8 +38,6 @@
   border-radius: 4px;
 }
 
-
-/* Responsive stil */
 @media (max-width: 768px) {
   .nav-links {
     position: absolute;

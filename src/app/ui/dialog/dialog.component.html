@@ -1,0 +1,17 @@
+<div id="dialog-back" (click)="onCloseDialog()">
+</div>
+
+<div id="dialog-content">
+  <form #rentBookForm="ngForm" (ngSubmit)="onSubmitDialog(rentBookForm)">
+    <div class="mb-4">
+      <label for="dueDate" class="form-label">Son Teslim Tarihi</label>
+      <input type="date" class="form-control" id="dueDate" name="dueDate" ngModel required/>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <button type="button" mat-stroked-button (click)="onCloseDialog()">İptal</button>
+      <button mat-flat-button type="submit">Kaydet</button>
+    </div>
+  </form>
+</div>
+
