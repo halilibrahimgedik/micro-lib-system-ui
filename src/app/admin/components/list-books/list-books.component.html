@@ -14,6 +14,8 @@
   <tr class="p-3">
     <th>Kitap Adı</th>
     <th>Yazar</th>
+    <th>Açıklama</th>
+    <th>Resim</th>
     <th>Kullanıcılar</th>
     <th>İşlemler</th>
   </tr>
@@ -21,9 +23,11 @@
   <tbody style="vertical-align: middle">
     @for (book of booksWithUsers(); track book.bookId) {
       <tr>
-        <td>{{ book.name }}</td>
-        <td>{{ book.author }}</td>
-        <td>
+        <td style="min-width: 15vw">{{ book.name }}</td>
+        <td style="min-width: 10vw">{{ book.author }}</td>
+        <td>{{ book.summary | truncate}}</td>
+        <td style="max-width: 18vw">{{ book.imageUrl }}</td>
+        <td style="min-width: 8vw">
           <div class="user-icon">
             <a [routerLink]="['./book-detail',book.bookId]">
               <i class="fa-solid fa-user-group"></i>
@@ -32,7 +36,7 @@
           </div>
 
         </td>
-        <td>
+        <td style="min-width: 10vw">
           <div class="user-operation-buttons">
             <a (click)="onUpdateBook(book.bookId)">
               <img src="edit.png" alt="edit.png" class="user-operation-icon" />

@@ -1,3 +1,7 @@
 export interface BookById {
-  bookId: string;
+  bookId: string,
+  name: string,
+  author: string,
+  summary: string,
+  imageUrl: string,
 }

@@ -1,7 +1,7 @@
 .user-operation-buttons {
   display: flex;
   justify-content: center;
-  gap: 3vw;
+  gap: 2vw;
   align-items: center;
 }
 

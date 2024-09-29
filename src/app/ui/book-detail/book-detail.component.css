@@ -1,13 +1,17 @@
 section {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
+  height: 100vh;
 }
 
 #back-icon {
   font-size: 32px;
-  color: #0e0e0e;
-  margin: 2vh 0;
+  color: #6feaff;
+  position: relative;
+  top: 8vh;
+  left: -32%;
 }
 
 #book-details {
@@ -24,8 +28,7 @@ section {
 }
 
 #book-details img {
-  padding: 10px 0 0 10px;
-  height: 30vh;
+  height: 55vh;
   object-fit: contain;
   flex: 1;
 }

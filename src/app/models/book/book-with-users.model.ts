@@ -2,6 +2,8 @@ export interface BookWithUsers {
   bookId: string,
   author: string,
   name: string,
+  summary: string,
+  imageUrl: string,
   users: UserInfos[]
 }
 

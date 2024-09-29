@@ -5,11 +5,12 @@ import {BookList} from "../../models/book/book-list.model";
 import {CustomHttpService} from "../../services/custom-http.service";
 import {ApiResponse} from "../../models/api-response.model";
 import {AlertifyService, MessageType} from "../../services/common/alertify.service";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-cards',
   standalone: true,
-  imports: [CardComponent],
+  imports: [CardComponent, RouterLink],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.css'
 })
@@ -37,6 +38,13 @@ export class CardsComponent implements OnInit{
     });
 
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
+  }
+
+  scrollToSection(sectionId: string): void {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
 }

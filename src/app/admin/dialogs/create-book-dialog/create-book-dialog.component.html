@@ -11,8 +11,16 @@
       <label for="author" class="form-label">Author</label>
       <input type="email" class="form-control" id="author" placeholder="please enter author of book" formControlName="author">
     </div>
+    <div class="mb-3">
+      <label for="summary" class="form-label">Summary</label>
+      <textarea class="form-control" id="summary" rows="6" placeholder="Please enter a description for the book" formControlName="summary"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="imageUrl" class="form-label">Image URL</label>
+      <input type="text" class="form-control" id="imageUrl" placeholder="Please enter the image URL for the book" formControlName="imageUrl">
+    </div>
 
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between mt-4">
       <button type="button" mat-stroked-button (click)="onCloseDialog()">İptal</button>
       <button type="submit" mat-flat-button>Kaydet</button>
     </div>

@@ -32,7 +32,13 @@ export class CreateBookDialogComponent implements OnInit{
       }),
       author: new FormControl('',{
         validators: [Validators.required, Validators.minLength(3), Validators.maxLength(150)],
-      })
+      }),
+      summary: new FormControl('', {
+        validators: [Validators.required, Validators.minLength(3), Validators.maxLength(1000)],
+      }),
+      imageUrl: new FormControl('', {
+        validators: [Validators.required],
+      }),
     })
   }
 
@@ -45,6 +51,8 @@ export class CreateBookDialogComponent implements OnInit{
     const subscription = this.customHttpService.post<CreateBookResponse>("library-management.insert",{
       name: this.createBookDialogForm.controls["bookName"].value,
       author: this.createBookDialogForm.controls["author"].value,
+      summary: this.createBookDialogForm.controls["summary"].value,
+      imageUrl: this.createBookDialogForm.controls["imageUrl"].value,
     }).subscribe({
       next: (response) => {
         this.alertifyService.message("kitap başarıyla eklendi.",{

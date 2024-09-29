@@ -6,6 +6,7 @@
 
 #book-details {
   display: flex;
+  align-items: center;
   flex-direction: row;
   background-color: #212529;
   border-radius: 10px 10px 0 0;
@@ -14,7 +15,7 @@
 
 #book-details img {
   padding: 10px 0 0 10px;
-  height: 30vh;
+  height: 50vh;
   object-fit: contain;
   flex: 1;
 }

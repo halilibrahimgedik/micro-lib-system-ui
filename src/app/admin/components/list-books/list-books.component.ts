@@ -6,11 +6,12 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {RouterLink} from "@angular/router";
 import {UpdateBookDialogComponent} from "../../dialogs/update-book-dialog/update-book-dialog.component";
 import {Book} from "../../../models/book/book.model";
+import {TruncatePipe} from "../../../pipes/truncate.pipe";
 
 @Component({
   selector: 'app-list-books',
   standalone: true,
-  imports: [RouterLink, UpdateBookDialogComponent],
+  imports: [RouterLink, UpdateBookDialogComponent, TruncatePipe],
   templateUrl: './list-books.component.html',
   styleUrls: ['./list-books.component.css', '../../admin.component.css']
 })

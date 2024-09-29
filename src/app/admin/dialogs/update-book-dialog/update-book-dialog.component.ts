@@ -41,6 +41,12 @@ export class UpdateBookDialogComponent implements OnInit {
       author: new FormControl(this.book()?.author, {
         validators: [Validators.required, Validators.minLength(3), Validators.maxLength(150)],
       }),
+      summary: new FormControl(this.book()?.summary, {
+        validators: [Validators.required, Validators.minLength(3), Validators.maxLength(1000)],
+      }),
+      imageUrl: new FormControl(this.book().imageUrl, {
+        validators: [Validators.required],
+      }),
     });
   }
 
@@ -60,6 +66,8 @@ export class UpdateBookDialogComponent implements OnInit {
         id: this.updateBookDialogForm.controls["bookId"].value,
         name: this.updateBookDialogForm.get("bookName").value,
         author: this.updateBookDialogForm.controls["author"].value,
+        summary: this.updateBookDialogForm.controls["summary"].value,
+        imageUrl: this.updateBookDialogForm.controls["imageUrl"].value,
       }).subscribe({
         next: (response) => {
           this.alertifyService.message("Kitap başarıyla güncellenmiştir", {
@@ -83,7 +91,9 @@ export class UpdateBookDialogComponent implements OnInit {
     const updateBookInfos: Book = {
       bookId: this.updateBookDialogForm.controls["bookId"].value,
       name: this.updateBookDialogForm.get("bookName").value,
-      author: this.updateBookDialogForm.controls["author"].value
+      author: this.updateBookDialogForm.controls["author"].value,
+      summary: this.updateBookDialogForm.controls["summary"].value,
+      imageUrl: this.updateBookDialogForm.controls["imageUrl"].value,
     };
 
     this.updatedBookInfos.emit(updateBookInfos);

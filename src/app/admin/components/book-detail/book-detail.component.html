@@ -4,14 +4,12 @@
 
 <section>
   <div id="book-details">
-    <img src="fareler-ve-insanlar.jpg"/>
+    <img [src]="bookWithUsers()?.imageUrl"/>
     <div class="book-information">
       <h3>{{ bookWithUsers()?.name | titlecase }}</h3>
       <i>~{{ bookWithUsers()?.author | titlecase }}~</i>
       <p class="p-3">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam dicta distinctio dolor earum,
-        eos explicabo harum illum incidunt ipsam itaque magni maiores officiis possimus quam rem reprehenderit vel
-        velit?
+        {{ bookWithUsers().summary}}
       </p>
     </div>
   </div>

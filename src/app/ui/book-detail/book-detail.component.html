@@ -2,23 +2,17 @@
   <app-dialog (sendInfo)="onSendInfo($event)"/>
 }
 
-<a routerLink="/">
-  <i id="back-icon" class="fa-sharp fa-solid fa-circle-arrow-left"></i>
-</a>
-
 <section>
+  <a routerLink="/" id="back-icon">
+    <i class="fa-sharp fa-solid fa-circle-arrow-left"></i>
+  </a>
   <div id="book-details">
-    <img src="fareler-ve-insanlar.jpg"/>
+    <img [src]="book()?.imageUrl"/>
     <div class="book-information">
       <h3>{{ book()?.name | titlecase }}</h3>
       <i>~{{ book()?.author | titlecase }}~</i>
       <p class="p-3">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam dicta distinctio dolor earum,
-        eos explicabo harum illum incidunt ipsam itaque magni maiores officiis possimus quam rem reprehenderit vel
-        velit?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam dicta distinctio dolor earum,
-        eos explicabo harum illum incidunt ipsam itaque magni maiores officiis possimus quam rem reprehenderit vel
-        velit?
+        {{ book()?.summary }}
       </p>
 
 

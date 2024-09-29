@@ -4,13 +4,15 @@ import {AlertifyService, MessageType} from "../../../services/common/alertify.se
 import {BookWithUsers} from "../../../models/book/book-with-users.model";
 import {RouterLink} from "@angular/router";
 import {TitleCasePipe} from "@angular/common";
+import {TruncatePipe} from "../../../pipes/truncate.pipe";
 
 @Component({
   selector: 'app-book-detail',
   standalone: true,
   imports: [
     RouterLink,
-    TitleCasePipe
+    TitleCasePipe,
+    TruncatePipe
   ],
   templateUrl: './book-detail.component.html',
   styleUrl: './book-detail.component.css'
